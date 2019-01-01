@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>EngSoft Process ~ DB</name><driver>org.apache.derby.jdbc.ClientDriver</driver><username>fatec</username><password>fatec</password><savePassword>true</savePassword><url>jdbc:derby://localhost:1527/EngSoft Process</url><database/><serverAddress/></jdbcDataAdapter>
