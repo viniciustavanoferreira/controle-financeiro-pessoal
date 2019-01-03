@@ -3,12 +3,12 @@ package com.cfp.views;
 // Sessão de importação.
 import com.cfp.controllers.ControllerRecurso;
 import com.cfp.controllers.ControllerAtividade;
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.cfp.models.Recurso;
 import com.cfp.models.Atividade;
-import com.cfp.models.Projeto;
+import com.cfp.models.Receita;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class ViewAtividade extends javax.swing.JFrame {
 
     private List<Atividade> atividades;
     private List<Recurso> funcionarios;
-    private List<Projeto> projetos;
+    private List<Receita> projetos;
     private Atividade atividade;
     private final User user;
     
@@ -586,13 +586,13 @@ public class ViewAtividade extends javax.swing.JFrame {
         }
         
         try {
-            this.projetos = ControllerProjeto.lista();
+            this.projetos = ControllerReceita.lista();
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
-        for (Projeto projeto : this.projetos) {
-            this.cbProjeto.addItem(projeto.getNome());
+        for (Receita projeto : this.projetos) {
+            this.cbProjeto.addItem(projeto.getStrDescricao());
         }
         this.btExcluir.setEnabled(true);
         this.btLimpar.setEnabled(true);
@@ -623,7 +623,7 @@ public class ViewAtividade extends javax.swing.JFrame {
         if (!isCamposValidos()) {
             return;
         }
-        Projeto projeto = this.projetos.get(this.cbProjeto.getSelectedIndex());
+        Receita projeto = this.projetos.get(this.cbProjeto.getSelectedIndex());
         Recurso funcionario = this.funcionarios.get(this.cbFuncionario.getSelectedIndex());
         Date inicio = this.dcInicio.getDate();
         Date fim = this.dcFim.getDate();

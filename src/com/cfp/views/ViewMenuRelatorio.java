@@ -3,7 +3,7 @@ package com.cfp.views;
 //Sessão de importação.
 import com.cfp.controllers.ControllerRecurso;
 import com.cfp.controllers.ControllerAtividade;
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -381,13 +381,13 @@ public class ViewMenuRelatorio extends javax.swing.JFrame {
             JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
             Map parametros = new HashMap();
             // trocar para ControllerAtividade
-            rs = ControllerProjeto.buscarHorasProjetos();
+            rs = ControllerReceita.buscarHorasProjetos();
             JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
             //JasperReport relProjetos = JasperCompileManager.compileReport("C:\\Users\\vtffa\\Desktop\\Projeto POO Av - P2\\Divisão de trabalho entre equipe de desenvolvedores de software ~ V.03.01\\src\\report\\MyReports\\bin\\ProjetosRecursos.jrxml");
             //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
             // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
 
-            Object con = ControllerProjeto.getConnection();
+            Object con = ControllerReceita.getConnection();
             parametros.put("REPORT_CONNECTION",con);
 
             JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\AtuacaoProjeto.jasper", parametros, jrRS);
@@ -412,13 +412,13 @@ public class ViewMenuRelatorio extends javax.swing.JFrame {
             JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
             Map parametros = new HashMap();
             // trocar para ControllerAtividade
-            rs = ControllerProjeto.buscarAtividadesRecursos();
+            rs = ControllerReceita.buscarAtividadesRecursos();
             JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
             //JasperReport relProjetos = JasperCompileManager.compileReport("C:\\Users\\vtffa\\Desktop\\Projeto POO Av - P2\\Divisão de trabalho entre equipe de desenvolvedores de software ~ V.03.01\\src\\report\\MyReports\\bin\\ProjetosRecursos.jrxml");
             //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
             // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
 
-            Object con = ControllerProjeto.getConnection();
+            Object con = ControllerReceita.getConnection();
             parametros.put("REPORT_CONNECTION",con);
 
             JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\AtividadesRecursos.jasper", parametros, jrRS);
@@ -443,13 +443,13 @@ public class ViewMenuRelatorio extends javax.swing.JFrame {
             JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
             Map parametros = new HashMap();
             
-            rs = ControllerProjeto.buscarTodosProjetos();
+            rs = ControllerReceita.buscarTodasReceitas();
             JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
             //JasperReport relProjetos = JasperCompileManager.compileReport("C:\\Users\\vtffa\\Desktop\\Projeto POO Av - P2\\Divisão de trabalho entre equipe de desenvolvedores de software ~ V.03.01\\src\\report\\MyReports\\bin\\ProjetoReal.jrxml");
             //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
             // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
             
-            Object con = ControllerProjeto.getConnection();
+            Object con = ControllerReceita.getConnection();
             parametros.put("REPORT_CONNECTION",con);
 
             JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\ProjectsList.jasper", parametros, jrRS);

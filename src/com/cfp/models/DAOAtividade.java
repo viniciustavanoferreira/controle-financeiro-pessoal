@@ -38,7 +38,7 @@ public class DAOAtividade {
             Integer status = rs.getInt("STATUS");
             Integer horas = rs.getInt("HORAS");
 
-            Atividade atividade = new Atividade(codigo, new Projeto(projeto), new Recurso(funcionario), inicio, fim, atv, status, horas);
+            Atividade atividade = new Atividade(codigo, new Receita(projeto), new Recurso(funcionario), inicio, fim, atv, status, horas);
             atividades.add(atividade);
         }
         return atividades;
@@ -51,7 +51,7 @@ public class DAOAtividade {
         ps.setDate(1, new java.sql.Date(atividade.getInicio().getTime()));
         ps.setDate(2, new java.sql.Date(atividade.getFim().getTime()));
         ps.setString(3, atividade.getAtividade());
-        ps.setInt(4, atividade.getProjeto().getCodigo());
+        ps.setInt(4, atividade.getProjeto().getIntCodigo());
         ps.setInt(5, atividade.getFuncionario().getCodigo());
         ps.setInt(6, atividade.getHoras());
         ps.setInt(7, atividade.getStatus());
@@ -84,7 +84,7 @@ public class DAOAtividade {
         ps.setDate(2, new java.sql.Date(atividade.getInicio().getTime()));
         ps.setDate(3, new java.sql.Date(atividade.getFim().getTime()));
         ps.setInt(4, atividade.getStatus());
-        ps.setInt(5, atividade.getProjeto().getCodigo());
+        ps.setInt(5, atividade.getProjeto().getIntCodigo());
         ps.setInt(6, atividade.getHoras());
         ps.setString(7, atividade.getAtividade());
         ps.setInt(8, atividade.getCodigo());
@@ -130,7 +130,7 @@ public class DAOAtividade {
             Integer status = rs.getInt("STATUS");
             Integer horas = rs.getInt("HORAS");
 
-            Atividade atividade = new Atividade(codigo, new Projeto(projeto), new Recurso(funcionario), inicio, fim, atv, status, horas);
+            Atividade atividade = new Atividade(codigo, new Receita(projeto), new Recurso(funcionario), inicio, fim, atv, status, horas);
             atividades.add(atividade);
         }
         return atividades;

@@ -1,11 +1,11 @@
 package com.cfp.views;
 
 // Sessão de importação.
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import com.cfp.controllers.ControllerUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.cfp.models.Projeto;
+import com.cfp.models.Receita;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,14 +15,14 @@ import com.cfp.models.User;
 import com.cfp.utils.DocumentoLimitado;
 
 /**
- * Classe que define a tela ~ Projeto.
+ * Classe que define a tela ~ Receita.
  * @author Vinicius Tavano Ferreira.
  * @since Classe criada em 07/09/2017.
  */
 public class ViewSenha extends javax.swing.JFrame {
 
-    private List<Projeto> projetos;
-    private Projeto projeto;
+    private List<Receita> projetos;
+    private Receita projeto;
     private final User user;
 
     /**
@@ -280,7 +280,7 @@ public class ViewSenha extends javax.swing.JFrame {
 //        String etapa = (String) this.cbModeloProcesso.getSelectedItem();
 
 //        if (this.projeto == null) {
-//            this.projeto = new Projeto();
+//            this.projeto = new Receita();
 //        }
 ////        this.projeto.setCodigo(codigo);
 //        this.projeto.setNome(nome);
@@ -298,7 +298,7 @@ public class ViewSenha extends javax.swing.JFrame {
     private void removerProjeto() {
 //        Integer codProjeto = Integer.parseInt(tfCodigo.getText());
 //        try {
-//            ControllerProjeto.excluirProjeto(codProjeto);
+//            ControllerReceita.excluirProjeto(codProjeto);
 //        } catch (SQLException ex) {
 //            Logger.getLogger(ViewSenha.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (ClassNotFoundException ex) {
@@ -345,12 +345,12 @@ public class ViewSenha extends javax.swing.JFrame {
 //        tableModel.setColumnIdentifiers(colunas);
 //
 //        try {
-//            this.projetos = ControllerProjeto.lista();
+//            this.projetos = ControllerReceita.lista();
 //        } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
 //
-//        for (Projeto p : this.projetos) {
+//        for (Receita p : this.projetos) {
 //            tableModel.addRow(p.getValueAsObject());
 //        }
 ////        this.tbProjeto.setModel(tableModel);
@@ -360,7 +360,7 @@ public class ViewSenha extends javax.swing.JFrame {
 
         if (this.projeto != null) {
 //            this.tfCodigo.setText(this.projeto.getCodigo().toString());
-            this.tfConfirmaSenha.setText(this.projeto.getNome());
+            this.tfConfirmaSenha.setText(this.projeto.getStrDescricao());
 //            this.cbModeloProcesso.setSelectedItem(this.projeto.getEtapa());
         }
         

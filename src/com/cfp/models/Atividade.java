@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Atividade {
     private Integer codigo;
-    private Projeto projeto;
+    private Receita projeto;
     private Recurso funcionario;
     private Date inicio;
     private Date fim;
@@ -25,7 +25,7 @@ public class Atividade {
 
     }
 
-    public Atividade(Projeto projeto, Recurso funcionario, Date inicio, Date fim, Integer status) {
+    public Atividade(Receita projeto, Recurso funcionario, Date inicio, Date fim, Integer status) {
         this.projeto = projeto;
         this.funcionario = funcionario;
         this.inicio = inicio;
@@ -33,7 +33,7 @@ public class Atividade {
         this.status = status;
     }
 
-    Atividade(Integer codigo, Projeto projeto, Recurso funcionario, Date inicio, Date fim, String atividade, Integer status, Integer horas) {
+    Atividade(Integer codigo, Receita projeto, Recurso funcionario, Date inicio, Date fim, String atividade, Integer status, Integer horas) {
         this.codigo = codigo;
         this.projeto = projeto;
         this.funcionario = funcionario;
@@ -61,11 +61,11 @@ public class Atividade {
         this.codigo = codigo;
     }
 
-    public Projeto getProjeto() {
+    public Receita getProjeto() {
         return projeto;
     }
 
-    public void setProjeto(Projeto projeto) {
+    public void setProjeto(Receita projeto) {
         this.projeto = projeto;
     }
 
@@ -139,14 +139,14 @@ public class Atividade {
     public Object[] getValueAsObject() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        return new String[]{this.projeto.getNome(), this.funcionario.getNome(), sdf.format(this.inicio), sdf.format(this.fim),
+        return new String[]{this.projeto.getStrDescricao(), this.funcionario.getNome(), sdf.format(this.inicio), sdf.format(this.fim),
                             this.atividade, this.status.toString(), this.horas.toString()};
     }
     
     public Object[] getValueAsObjectPercent() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        return new String[]{this.projeto.getNome(), sdf.format(this.inicio), sdf.format(this.fim),
+        return new String[]{this.projeto.getStrDescricao(), sdf.format(this.inicio), sdf.format(this.fim),
                             this.atividade, this.status.toString(), this.horas.toString()};
     }
 

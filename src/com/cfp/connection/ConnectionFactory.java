@@ -10,6 +10,9 @@ import java.sql.SQLException;
  * @since Classe criada em 15/10/2018
  */
 public class ConnectionFactory {
+    
+        // Blocos estáticos são carregados depois que a JVM interpreta do classpath, 
+        //porém antes de processar seu respectivo construtor.
 	static{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -22,7 +25,8 @@ public class ConnectionFactory {
 	public static Connection getConnection () throws SQLException{
 		Connection conn = DriverManager.
 				getConnection("jdbc:mysql://localhost:3306/controle_financeiro_pessoal", 
-						"root", "");
+						"root", ""); // Usuário e senha utilizado no MySQL após subir
+                                                             //o servidor XAMPP.
 		return conn;
 	}
   

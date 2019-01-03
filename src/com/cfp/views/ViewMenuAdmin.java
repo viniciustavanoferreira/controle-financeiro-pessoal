@@ -1,7 +1,7 @@
 package com.cfp.views;
 
 //Sessão de importação.
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import com.cfp.controllers.ControllerUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -285,7 +285,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
             //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
             // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
 
-            Object con = ControllerProjeto.getConnection();
+            Object con = ControllerReceita.getConnection();
             parametros.put("REPORT_CONNECTION",con);
 
             JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\PapeisUsuarios.jasper", parametros, jrRS);

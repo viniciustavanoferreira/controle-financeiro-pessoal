@@ -178,7 +178,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btRecurso" alignment="1" pref="213" max="32767" attributes="0"/>
                           <Component id="btOrcamento" alignment="1" pref="213" max="32767" attributes="0"/>
-                          <Component id="btProjeto" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btReceita" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
@@ -190,7 +190,7 @@
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btRecurso" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btProjeto" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btReceita" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btOrcamento" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -217,7 +217,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRecursoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btProjeto">
+            <Component class="javax.swing.JButton" name="btReceita">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -228,11 +228,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Projetos"/>
-                <Property name="toolTipText" type="java.lang.String" value="Click para administrar projetos"/>
+                <Property name="text" type="java.lang.String" value="Receitas"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para administrar receitas"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btProjetoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btReceitaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btOrcamento">
@@ -354,7 +354,7 @@
             <Component class="javax.swing.JLabel" name="lbBusinessMan">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/businessman72.png"/>
+                  <Image iconType="3" name="/com/cfp/images/businessman72.png"/>
                 </Property>
               </Properties>
             </Component>

@@ -38,7 +38,7 @@ public class ViewMenu extends javax.swing.JFrame {
         painelMenu = new javax.swing.JPanel();
         painelBotoes = new javax.swing.JPanel();
         btRecurso = new javax.swing.JButton();
-        btProjeto = new javax.swing.JButton();
+        btReceita = new javax.swing.JButton();
         btOrcamento = new javax.swing.JButton();
         painelCabNomeRE = new javax.swing.JPanel();
         lbOla = new javax.swing.JLabel();
@@ -108,14 +108,14 @@ public class ViewMenu extends javax.swing.JFrame {
             }
         });
 
-        btProjeto.setBackground(new java.awt.Color(102, 102, 102));
-        btProjeto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btProjeto.setForeground(new java.awt.Color(255, 255, 255));
-        btProjeto.setText("Projetos");
-        btProjeto.setToolTipText("Click para administrar projetos");
-        btProjeto.addActionListener(new java.awt.event.ActionListener() {
+        btReceita.setBackground(new java.awt.Color(102, 102, 102));
+        btReceita.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btReceita.setForeground(new java.awt.Color(255, 255, 255));
+        btReceita.setText("Receitas");
+        btReceita.setToolTipText("Click para administrar receitas");
+        btReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btProjetoActionPerformed(evt);
+                btReceitaActionPerformed(evt);
             }
         });
 
@@ -139,7 +139,7 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btRecurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                     .addComponent(btOrcamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(btProjeto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btReceita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
         painelBotoesLayout.setVerticalGroup(
@@ -148,7 +148,7 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(btRecurso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -174,7 +174,7 @@ public class ViewMenu extends javax.swing.JFrame {
         lbDescName.setForeground(new java.awt.Color(102, 102, 102));
         lbDescName.setText("Nome Usuario");
 
-        lbBusinessMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/businessman72.png"))); // NOI18N
+        lbBusinessMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cfp/images/businessman72.png"))); // NOI18N
 
         javax.swing.GroupLayout painelCabNomeRELayout = new javax.swing.GroupLayout(painelCabNomeRE);
         painelCabNomeRE.setLayout(painelCabNomeRELayout);
@@ -281,11 +281,11 @@ public class ViewMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btOrcamentoActionPerformed
 
-    private void btProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProjetoActionPerformed
-        //Invoca a tela ~ ViewProjeto.
-        new ViewProjeto(this.user).setVisible(true);
+    private void btReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReceitaActionPerformed
+        //Invoca a tela ~ ViewReceita.
+        new ViewReceita(this.user).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btProjetoActionPerformed
+    }//GEN-LAST:event_btReceitaActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         //Invoca a tela ~ ViewMenuRelatorio.
@@ -340,7 +340,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOrcamento;
-    private javax.swing.JButton btProjeto;
+    private javax.swing.JButton btReceita;
     private javax.swing.JButton btRecurso;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel lbBusinessMan;

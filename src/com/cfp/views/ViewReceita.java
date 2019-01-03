@@ -1,10 +1,10 @@
 package com.cfp.views;
 
 // Sessão de importação.
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.cfp.models.Projeto;
+import com.cfp.models.Receita;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,34 +14,34 @@ import com.cfp.models.User;
 import com.cfp.utils.DocumentoLimitado;
 
 /**
- * Classe que define a tela ~ Projeto.
+ * Classe que define a tela ~ Receita.
  * @author Vinicius Tavano Ferreira.
- * @since Classe criada em 07/09/2017.
+ * @since Classe criada em 07/09/2018.
  */
-public class ViewProjeto extends javax.swing.JFrame {
+public class ViewReceita extends javax.swing.JFrame {
 
-    private List<Projeto> projetos;
-    private Projeto projeto;
+    private List<Receita> receitas;
+    private Receita receita;
     private final User user;
 
     /**
      * Creates new form FormProjeto
      * @param user
      */
-    public ViewProjeto(User user) {
+    public ViewReceita(User user) {
         initComponents();
         this.user = user;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 //        setLocation(400, 100);//(x,y)
-        setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         tfCodigo.setEditable(true);
         this.atualizarTabela();
         this.btExcluir.setEnabled(false);
         this.btLimpar.setEnabled(false);
-        tfNome.setDocument(new DocumentoLimitado(11));
+        tfDescricao.setDocument(new DocumentoLimitado(25));
     }
 
-    private ViewProjeto() {
+    private ViewReceita() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -56,13 +56,13 @@ public class ViewProjeto extends javax.swing.JFrame {
 
         painelProjeto = new javax.swing.JPanel();
         lbCodigo = new javax.swing.JLabel();
-        lbNome = new javax.swing.JLabel();
-        lbModeloProcesso = new javax.swing.JLabel();
+        lbDescricao = new javax.swing.JLabel();
+        lbAtivo = new javax.swing.JLabel();
         tfCodigo = new javax.swing.JTextField();
-        tfNome = new javax.swing.JTextField();
-        cbModeloProcesso = new javax.swing.JComboBox<>();
+        tfDescricao = new javax.swing.JTextField();
+        cbAtivo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbProjeto = new javax.swing.JTable();
+        tbReceita = new javax.swing.JTable();
         painelBotoes = new javax.swing.JPanel();
         btSalvar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
@@ -78,26 +78,26 @@ public class ViewProjeto extends javax.swing.JFrame {
         setResizable(false);
 
         painelProjeto.setBackground(new java.awt.Color(255, 255, 255));
-        painelProjeto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Projeto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
+        painelProjeto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados da Receita", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
 
         lbCodigo.setForeground(new java.awt.Color(0, 153, 255));
         lbCodigo.setText("Código:");
 
-        lbNome.setForeground(new java.awt.Color(0, 153, 255));
-        lbNome.setText("Nome:");
+        lbDescricao.setForeground(new java.awt.Color(0, 153, 255));
+        lbDescricao.setText("Descrição:");
 
-        lbModeloProcesso.setForeground(new java.awt.Color(0, 153, 255));
-        lbModeloProcesso.setText("Modelo de processo:");
+        lbAtivo.setForeground(new java.awt.Color(0, 153, 255));
+        lbAtivo.setText("Ativo:");
 
         tfCodigo.setBackground(new java.awt.Color(227, 218, 218));
         tfCodigo.setFocusable(false);
 
-        cbModeloProcesso.setBackground(new java.awt.Color(255, 255, 204));
-        cbModeloProcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "XP", "Crystal", "FDD", "Waterfall", "RUP", "RAD", "Prototipação", "Incremental", "Espiral" }));
-        cbModeloProcesso.setSelectedIndex(-1);
-        cbModeloProcesso.addActionListener(new java.awt.event.ActionListener() {
+        cbAtivo.setBackground(new java.awt.Color(255, 255, 204));
+        cbAtivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "N" }));
+        cbAtivo.setSelectedIndex(-1);
+        cbAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbModeloProcessoActionPerformed(evt);
+                cbAtivoActionPerformed(evt);
             }
         });
 
@@ -111,13 +111,13 @@ public class ViewProjeto extends javax.swing.JFrame {
                     .addGroup(painelProjetoLayout.createSequentialGroup()
                         .addGroup(painelProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbCodigo)
-                            .addComponent(lbNome))
+                            .addComponent(lbDescricao))
                         .addGap(79, 79, 79)
                         .addGroup(painelProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbModeloProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lbModeloProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelProjetoLayout.setVerticalGroup(
@@ -129,17 +129,17 @@ public class ViewProjeto extends javax.swing.JFrame {
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(painelProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNome)
-                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbDescricao)
+                    .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelProjetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbModeloProcesso)
-                    .addComponent(cbModeloProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbAtivo)
+                    .addComponent(cbAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tbProjeto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tbProjeto.setModel(new javax.swing.table.DefaultTableModel(
+        tbReceita.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tbReceita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -148,11 +148,11 @@ public class ViewProjeto extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "Modelo proc."
+                "Codigo", "Descrição", "Ativo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -166,15 +166,15 @@ public class ViewProjeto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbProjeto.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbReceita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbProjetoMouseClicked(evt);
+                tbReceitaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbProjeto);
-        if (tbProjeto.getColumnModel().getColumnCount() > 0) {
-            tbProjeto.getColumnModel().getColumn(0).setMinWidth(60);
-            tbProjeto.getColumnModel().getColumn(0).setMaxWidth(60);
+        jScrollPane1.setViewportView(tbReceita);
+        if (tbReceita.getColumnModel().getColumnCount() > 0) {
+            tbReceita.getColumnModel().getColumn(0).setMinWidth(60);
+            tbReceita.getColumnModel().getColumn(0).setMaxWidth(60);
         }
 
         painelBotoes.setBackground(new java.awt.Color(255, 255, 255));
@@ -183,7 +183,7 @@ public class ViewProjeto extends javax.swing.JFrame {
         btSalvar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btSalvar.setForeground(new java.awt.Color(0, 153, 255));
         btSalvar.setText("Salvar");
-        btSalvar.setToolTipText("Incluir ou modificar um projeto");
+        btSalvar.setToolTipText("Incluir ou modificar uma receita");
         btSalvar.setName("btSalvar"); // NOI18N
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class ViewProjeto extends javax.swing.JFrame {
         btExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btExcluir.setForeground(new java.awt.Color(0, 153, 255));
         btExcluir.setText("Excluir");
-        btExcluir.setToolTipText("Deletar um projeto");
+        btExcluir.setToolTipText("Deletar uma receita");
         btExcluir.setName("btSalvar"); // NOI18N
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +227,7 @@ public class ViewProjeto extends javax.swing.JFrame {
         btListagem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btListagem.setForeground(new java.awt.Color(0, 153, 255));
         btListagem.setText("Listagem");
-        btListagem.setToolTipText("Listar todos os projetos");
+        btListagem.setToolTipText("Listar todas as receitas");
         btListagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListagemActionPerformed(evt);
@@ -315,37 +315,52 @@ public class ViewProjeto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btMenuActionPerformed
 
-    private void tbProjetoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProjetoMouseClicked
-        int row = this.tbProjeto.getSelectedRow();
-        this.projeto = this.projetos.get(row);
+    private void tbReceitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbReceitaMouseClicked
+        int row = this.tbReceita.getSelectedRow();
+        this.receita = this.receitas.get(row);
         this.popularCampos();
-    }//GEN-LAST:event_tbProjetoMouseClicked
+    }//GEN-LAST:event_tbReceitaMouseClicked
 
     private void btListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListagemActionPerformed
-        ResultSet rs;
-        String listagem = "Código\tNome do Projeto\tEtapa";
-        listagem = listagem + "\n======================================================================";
-        try {
-            rs = ControllerProjeto.buscarTodosProjetos();
-            while (rs.next()) {
+//        ResultSet rs;
+        String listagem = "Código\t\t\tDescrição\t\t\tAtivo";
+        listagem = listagem + "\n================================================================";
+        try{
+            List<Receita> listaReceitas = ControllerReceita.buscarListaReceitas();
+            for (Receita p : listaReceitas) {
                 listagem = listagem + "\n"
-                        + rs.getString("codigo") + "\t"
-                        + rs.getString("nome") + "\t\t"
-                        + rs.getString("etapa");
+                        + p.getIntCodigo().toString() + "\t\t\t"
+                        + p.getStrDescricao() + "\t\t"
+                        + p.getStrAtivo();
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewProjeto.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewProjeto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no Banco de Dados!");
         }
+        
+
+        
+        
+//        try {
+//            rs = ControllerReceita.buscarTodasReceitas();
+//            while (rs.next()) {
+//                listagem = listagem + "\n"
+//                        + rs.getString("codigo") + "\t"
+//                        + rs.getString("descricao") + "\t\t"
+//                        + rs.getString("ativo");
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ViewReceita.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewReceita.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         ViewListagem flp = new ViewListagem(listagem, this, true);
         flp.setVisible(true);
 
     }//GEN-LAST:event_btListagemActionPerformed
 
-    private void cbModeloProcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbModeloProcessoActionPerformed
+    private void cbAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAtivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbModeloProcessoActionPerformed
+    }//GEN-LAST:event_cbAtivoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -361,14 +376,18 @@ public class ViewProjeto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewProjeto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -377,7 +396,7 @@ public class ViewProjeto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewProjeto().setVisible(true);
+                new ViewReceita().setVisible(true);
             }
         });
     }
@@ -388,16 +407,16 @@ public class ViewProjeto extends javax.swing.JFrame {
     private javax.swing.JButton btListagem;
     private javax.swing.JButton btMenu;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JComboBox<String> cbModeloProcesso;
+    private javax.swing.JComboBox<String> cbAtivo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbAtivo;
     private javax.swing.JLabel lbCodigo;
-    private javax.swing.JLabel lbModeloProcesso;
-    private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbDescricao;
     private javax.swing.JPanel painelBotoes;
     private javax.swing.JPanel painelProjeto;
-    private javax.swing.JTable tbProjeto;
+    private javax.swing.JTable tbReceita;
     private javax.swing.JTextField tfCodigo;
-    private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfDescricao;
     // End of variables declaration//GEN-END:variables
 
     private void salvarProjeto() {
@@ -406,20 +425,20 @@ public class ViewProjeto extends javax.swing.JFrame {
         }
         
         Integer codigo = tfCodigo.getText().isEmpty() ? null : Integer.parseInt(tfCodigo.getText());
-        String nome = this.tfNome.getText();
-        String etapa = (String) this.cbModeloProcesso.getSelectedItem();
+        String nome = this.tfDescricao.getText();
+        String etapa = (String) this.cbAtivo.getSelectedItem();
 
-        if (this.projeto == null) {
-            this.projeto = new Projeto();
+        if (this.receita == null) {
+            this.receita = new Receita();
         }
-        this.projeto.setCodigo(codigo);
-        this.projeto.setNome(nome);
-        this.projeto.setEtapa(etapa);
+        this.receita.setIntCodigo(codigo);
+        this.receita.setStrDescricao(nome);
+        this.receita.setStrAtivo(etapa);
 
         try {
-            ControllerProjeto.inserirProjeto(this.projeto);
+            ControllerReceita.inserirProjeto(this.receita);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ViewProjeto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewReceita.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.limparCampos();
         this.atualizarTabela();
@@ -428,19 +447,19 @@ public class ViewProjeto extends javax.swing.JFrame {
     private void removerProjeto() {
         Integer codProjeto = Integer.parseInt(tfCodigo.getText());
         try {
-            ControllerProjeto.excluirProjeto(codProjeto);
+            ControllerReceita.excluirProjeto(codProjeto);
         } catch (SQLException ex) {
-            Logger.getLogger(ViewProjeto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewReceita.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewProjeto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewReceita.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.limparCampos();
     }
   
     private void limparCampos() {
         this.tfCodigo.setText("");
-        this.tfNome.setText("");
-        this.cbModeloProcesso.setSelectedIndex(-1);
+        this.tfDescricao.setText("");
+        this.cbAtivo.setSelectedIndex(-1);
 
         this.tfCodigo.setEnabled(true);
         this.btExcluir.setEnabled(false);
@@ -451,9 +470,9 @@ public class ViewProjeto extends javax.swing.JFrame {
     private boolean isCamposValidos() {
         boolean isValido = false;
 
-        if (this.tfNome.getText().isEmpty()) {
+        if (this.tfDescricao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Nome é obrigatório");
-        } else if (this.cbModeloProcesso.getSelectedIndex() < 0) {
+        } else if (this.cbAtivo.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(this, "Etapa é obrigatório");
         } else {
             isValido = true;
@@ -462,28 +481,28 @@ public class ViewProjeto extends javax.swing.JFrame {
     }
 
     private void atualizarTabela() {
-        String[] colunas = {"Codigo", "Nome", "Modelo proc."};
+        String[] colunas = {"Código", "Descrição", "Ativo"};
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.setColumnIdentifiers(colunas);
 
         try {
-            this.projetos = ControllerProjeto.lista();
+            this.receitas = ControllerReceita.lista();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        for (Projeto p : this.projetos) {
+        for (Receita p : this.receitas) {
             tableModel.addRow(p.getValueAsObject());
         }
-        this.tbProjeto.setModel(tableModel);
+        this.tbReceita.setModel(tableModel);
     }
 
     private void popularCampos() {
 
-        if (this.projeto != null) {
-            this.tfCodigo.setText(this.projeto.getCodigo().toString());
-            this.tfNome.setText(this.projeto.getNome());
-            this.cbModeloProcesso.setSelectedItem(this.projeto.getEtapa());
+        if (this.receita != null) {
+            this.tfCodigo.setText(this.receita.getIntCodigo().toString());
+            this.tfDescricao.setText(this.receita.getStrDescricao());
+            this.cbAtivo.setSelectedItem(this.receita.getStrAtivo());
         }
         
         this.btExcluir.setEnabled(true);
@@ -491,4 +510,4 @@ public class ViewProjeto extends javax.swing.JFrame {
         this.tfCodigo.setEnabled(false);
     }
 
-}//fim do ViewProjeto
+}//fim do ViewReceita

@@ -1,7 +1,7 @@
 package com.cfp.views;
 
 //Sessão de importação.
-import com.cfp.controllers.ControllerProjeto;
+import com.cfp.controllers.ControllerReceita;
 import com.cfp.controllers.ControllerUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
