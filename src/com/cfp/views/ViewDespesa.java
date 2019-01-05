@@ -1,34 +1,32 @@
 package com.cfp.views;
 
 // Sessão de importação.
-import com.cfp.controllers.ControllerReceita;
+import com.cfp.controllers.ControllerDespesa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.cfp.models.Receita;
+import com.cfp.models.Despesa;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.cfp.models.User;
 import com.cfp.utils.DocumentoLimitado;
 
 /**
- * Classe que define a tela ~ Receita.
+ * Classe que define a tela ~ Despesa.
  * @author Vinicius Tavano Ferreira.
- * @since Classe criada em 07/09/2018.
+ * @since Classe criada em 09/10/2018.
  */
-public class ViewReceita extends javax.swing.JFrame {
+public class ViewDespesa extends javax.swing.JFrame {
 
-    private List<Receita> receitas;
-    private Receita receita;
+    private List<Despesa> despesas;
+    private Despesa despesa;
     private final User user;
 
     /**
      * Creates new form FormProjeto
      * @param user
      */
-    public ViewReceita(User user) {
+    public ViewDespesa(User user) {
         initComponents();
         this.user = user;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -41,8 +39,8 @@ public class ViewReceita extends javax.swing.JFrame {
         tfDescricao.setDocument(new DocumentoLimitado(25));
     }
 
-    private ViewReceita() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private ViewDespesa() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -62,7 +60,7 @@ public class ViewReceita extends javax.swing.JFrame {
         tfDescricao = new javax.swing.JTextField();
         cbAtivo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbReceita = new javax.swing.JTable();
+        tbDespesa = new javax.swing.JTable();
         painelBotoes = new javax.swing.JPanel();
         btSalvar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
@@ -78,7 +76,7 @@ public class ViewReceita extends javax.swing.JFrame {
         setResizable(false);
 
         painelProjeto.setBackground(new java.awt.Color(255, 255, 255));
-        painelProjeto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados da Receita", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
+        painelProjeto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados da Despesa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
 
         lbCodigo.setForeground(new java.awt.Color(0, 153, 255));
         lbCodigo.setText("Código:");
@@ -138,8 +136,8 @@ public class ViewReceita extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tbReceita.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tbReceita.setModel(new javax.swing.table.DefaultTableModel(
+        tbDespesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tbDespesa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -166,15 +164,15 @@ public class ViewReceita extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbReceita.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbDespesa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbReceitaMouseClicked(evt);
+                tbDespesaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbReceita);
-        if (tbReceita.getColumnModel().getColumnCount() > 0) {
-            tbReceita.getColumnModel().getColumn(0).setMinWidth(60);
-            tbReceita.getColumnModel().getColumn(0).setMaxWidth(60);
+        jScrollPane1.setViewportView(tbDespesa);
+        if (tbDespesa.getColumnModel().getColumnCount() > 0) {
+            tbDespesa.getColumnModel().getColumn(0).setMinWidth(60);
+            tbDespesa.getColumnModel().getColumn(0).setMaxWidth(60);
         }
 
         painelBotoes.setBackground(new java.awt.Color(255, 255, 255));
@@ -183,7 +181,7 @@ public class ViewReceita extends javax.swing.JFrame {
         btSalvar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btSalvar.setForeground(new java.awt.Color(0, 153, 255));
         btSalvar.setText("Salvar");
-        btSalvar.setToolTipText("Incluir ou modificar uma receita");
+        btSalvar.setToolTipText("Incluir ou modificar uma despesa");
         btSalvar.setName("btSalvar"); // NOI18N
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +192,7 @@ public class ViewReceita extends javax.swing.JFrame {
         btExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btExcluir.setForeground(new java.awt.Color(0, 153, 255));
         btExcluir.setText("Excluir");
-        btExcluir.setToolTipText("Deletar uma receita");
+        btExcluir.setToolTipText("Deletar uma despesa");
         btExcluir.setName("btSalvar"); // NOI18N
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +225,7 @@ public class ViewReceita extends javax.swing.JFrame {
         btListagem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btListagem.setForeground(new java.awt.Color(0, 153, 255));
         btListagem.setText("Listagem");
-        btListagem.setToolTipText("Listar todas as receitas");
+        btListagem.setToolTipText("Listar todas as despesas");
         btListagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListagemActionPerformed(evt);
@@ -292,11 +290,11 @@ public class ViewReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        this.salvarReceita();
+        this.salvarDespesa();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        this.removerReceita();
+        this.removerDespesa();
         this.limparCampos();
         this.atualizarTabela();
     }//GEN-LAST:event_btExcluirActionPerformed
@@ -311,28 +309,28 @@ public class ViewReceita extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btMenuActionPerformed
 
-    private void tbReceitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbReceitaMouseClicked
-        int row = this.tbReceita.getSelectedRow();
-        this.receita = this.receitas.get(row);
+    private void tbDespesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDespesaMouseClicked
+        int row = this.tbDespesa.getSelectedRow();
+        this.despesa = this.despesas.get(row);
         this.popularCampos();
-    }//GEN-LAST:event_tbReceitaMouseClicked
+    }//GEN-LAST:event_tbDespesaMouseClicked
 
     private void btListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListagemActionPerformed
 //        ResultSet rs;
         String listagem = "Código\t\t\tDescrição\t\t\tAtivo";
         listagem = listagem + "\n================================================================";
         try{
-            List<Receita> listaReceitas = ControllerReceita.buscarListaReceitas();
-            for (Receita r : listaReceitas) {
+            List<Despesa> listaDespesas = ControllerDespesa.buscarListaDespesas();
+            for (Despesa d : listaDespesas) {
                 listagem = listagem + "\n"
-                        + r.getIntCodigo().toString() + "\t\t\t"
-                        + r.getStrDescricao() + "\t\t"
-                        + r.getStrAtivo();
+                        + d.getIntCodigo().toString() + "\t\t\t"
+                        + d.getStrDescricao() + "\t\t"
+                        + d.getStrAtivo();
             }
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro no Banco de Dados: " + ex);
         }
-
+        
         ViewListagem flp = new ViewListagem(listagem, this, true);
         flp.setVisible(true);
 
@@ -356,13 +354,13 @@ public class ViewReceita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewReceita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDespesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -372,14 +370,21 @@ public class ViewReceita extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
-        // Invocação em função do paradigma voltado para a programação funcional
-        //viabilizando uma nova thread com o objeto de criar e exibir o form.
+        // Criação de thread para criar e exibir um novo form utilizando invocação
+        //sob os princípios do paradigma voltado para a programação funcional.
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ViewReceita().setVisible(true);
+                new ViewDespesa().setVisible(true);
             }
         });
     }
@@ -397,12 +402,12 @@ public class ViewReceita extends javax.swing.JFrame {
     private javax.swing.JLabel lbDescricao;
     private javax.swing.JPanel painelBotoes;
     private javax.swing.JPanel painelProjeto;
-    private javax.swing.JTable tbReceita;
+    private javax.swing.JTable tbDespesa;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfDescricao;
     // End of variables declaration//GEN-END:variables
 
-    private void salvarReceita() {
+    private void salvarDespesa() {
         if (!isCamposValidos()) {
             return;
         }
@@ -411,15 +416,15 @@ public class ViewReceita extends javax.swing.JFrame {
         String descricao = this.tfDescricao.getText();
         String ativo = (String) this.cbAtivo.getSelectedItem();
 
-        if (this.receita == null) {
-            this.receita = new Receita();
+        if (this.despesa == null) {
+            this.despesa = new Despesa();
         }
-        this.receita.setIntCodigo(codigo);
-        this.receita.setStrDescricao(descricao);
-        this.receita.setStrAtivo(ativo);
+        this.despesa.setIntCodigo(codigo);
+        this.despesa.setStrDescricao(descricao);
+        this.despesa.setStrAtivo(ativo);
 
         try {
-            ControllerReceita.inserirReceita(this.receita);
+            ControllerDespesa.inserirDespesa(this.despesa);
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao gravar no Banco de Dados: " + ex);
         }
@@ -427,10 +432,10 @@ public class ViewReceita extends javax.swing.JFrame {
         this.atualizarTabela();
     }
 
-    private void removerReceita() {
+    private void removerDespesa() {
         Integer codigo = Integer.parseInt(tfCodigo.getText());
         try {
-            ControllerReceita.excluirReceita(codigo);
+            ControllerDespesa.excluirDespesa(codigo);
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir no Banco de Dados: " + ex);
         }
@@ -467,25 +472,25 @@ public class ViewReceita extends javax.swing.JFrame {
         tableModel.setColumnIdentifiers(colunas);
 
         try {
-            this.receitas = ControllerReceita.lista();
+            this.despesas = ControllerDespesa.lista();
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao solicitar dados ao Banco de Dados: " + ex);
         }
         
-        // Utilização de invocação sob o paradigma voltado à programação funcional.
-        this.receitas.forEach((r) -> {
-            tableModel.addRow(r.getValueAsObject());
-        });
-            
-        this.tbReceita.setModel(tableModel);
+        // Utilização do paradigma voltado para a programação funcional.
+        this.despesas.forEach((d) -> {
+            tableModel.addRow(d.getValueAsObject());
+        }); 
+        
+        this.tbDespesa.setModel(tableModel);
     }
 
     private void popularCampos() {
 
-        if (this.receita != null) {
-            this.tfCodigo.setText(this.receita.getIntCodigo().toString());
-            this.tfDescricao.setText(this.receita.getStrDescricao());
-            this.cbAtivo.setSelectedItem(this.receita.getStrAtivo());
+        if (this.despesa != null) {
+            this.tfCodigo.setText(this.despesa.getIntCodigo().toString());
+            this.tfDescricao.setText(this.despesa.getStrDescricao());
+            this.cbAtivo.setSelectedItem(this.despesa.getStrAtivo());
         }
         
         this.btExcluir.setEnabled(true);
@@ -493,4 +498,4 @@ public class ViewReceita extends javax.swing.JFrame {
         this.tfCodigo.setEnabled(false);
     }
 
-}//fim do ViewReceita
+}//fim do ViewDespesa

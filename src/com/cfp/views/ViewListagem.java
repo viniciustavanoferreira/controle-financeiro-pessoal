@@ -6,12 +6,12 @@ import javax.swing.JDialog;
 /**
  * Classe que define a tela ~ Listagem de Projeto(s).
  * @author Vinicius Tavano Ferreira.
- * @since Classe criada em 07/09/2017.
+ * @since Classe criada em 02/11/2018.
  */
 public class ViewListagem extends JDialog {
 
     /**
-     * Creates new form FrameListagemPacientes
+     * Creates new form FrameListagem
      * @param lista
      * @param owner
      * @param modal
@@ -19,7 +19,7 @@ public class ViewListagem extends JDialog {
     public ViewListagem(String lista, java.awt.Frame owner, boolean modal) {
         super(owner, modal);
         initComponents();
-        taListagemProjetos.setText(lista);
+        taListagem.setText(lista);
     }
 
     /**
@@ -33,24 +33,24 @@ public class ViewListagem extends JDialog {
 
         painelListagem = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taListagemProjetos = new javax.swing.JTextArea();
-        lbListagemOrcamentos = new javax.swing.JLabel();
+        taListagem = new javax.swing.JTextArea();
+        lbListagem = new javax.swing.JLabel();
         painelBotoes = new javax.swing.JPanel();
         btFecharListagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        taListagemProjetos.setEditable(false);
-        taListagemProjetos.setColumns(20);
-        taListagemProjetos.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        taListagemProjetos.setForeground(new java.awt.Color(0, 153, 255));
-        taListagemProjetos.setRows(5);
-        jScrollPane1.setViewportView(taListagemProjetos);
+        taListagem.setEditable(false);
+        taListagem.setColumns(20);
+        taListagem.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        taListagem.setForeground(new java.awt.Color(0, 153, 255));
+        taListagem.setRows(5);
+        jScrollPane1.setViewportView(taListagem);
 
-        lbListagemOrcamentos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lbListagemOrcamentos.setForeground(new java.awt.Color(102, 102, 102));
-        lbListagemOrcamentos.setText("Listagem ");
+        lbListagem.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbListagem.setForeground(new java.awt.Color(102, 102, 102));
+        lbListagem.setText("Listagem ");
 
         javax.swing.GroupLayout painelListagemLayout = new javax.swing.GroupLayout(painelListagem);
         painelListagem.setLayout(painelListagemLayout);
@@ -62,14 +62,14 @@ public class ViewListagem extends JDialog {
                 .addContainerGap())
             .addGroup(painelListagemLayout.createSequentialGroup()
                 .addGap(206, 206, 206)
-                .addComponent(lbListagemOrcamentos)
+                .addComponent(lbListagem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelListagemLayout.setVerticalGroup(
             painelListagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelListagemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbListagemOrcamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbListagem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -132,9 +132,9 @@ public class ViewListagem extends JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btFecharListagem;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbListagemOrcamentos;
+    private javax.swing.JLabel lbListagem;
     private javax.swing.JPanel painelBotoes;
     private javax.swing.JPanel painelListagem;
-    private javax.swing.JTextArea taListagemProjetos;
+    private javax.swing.JTextArea taListagem;
     // End of variables declaration//GEN-END:variables
 }

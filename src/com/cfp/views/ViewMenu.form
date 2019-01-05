@@ -210,8 +210,8 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Recursos"/>
-                <Property name="toolTipText" type="java.lang.String" value="Click para administrar recursos"/>
+                <Property name="text" type="java.lang.String" value="Despesas"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para administrar despesas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRecursoActionPerformed"/>

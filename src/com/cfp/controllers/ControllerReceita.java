@@ -14,7 +14,7 @@ import com.cfp.models.DAOReceita;
  */
 public class ControllerReceita {
    
-    public static void inserirProjeto(Receita projeto) throws SQLException, ClassNotFoundException {
+    public static void inserirReceita(Receita projeto) throws SQLException, ClassNotFoundException {
         
         if (projeto.getIntCodigo() == null)
             DAOReceita.inserirReceita(projeto);
@@ -23,11 +23,11 @@ public class ControllerReceita {
 
     }//Fim do método inserirReceita.
 
-    public static Receita buscarProjeto(Integer codigo) throws SQLException, ClassNotFoundException {
+    public static Receita buscarReceita(Integer codigo) throws SQLException, ClassNotFoundException {
         return DAOReceita.buscarReceita(codigo);
     }
     
-    public static void excluirProjeto(Integer codProjeto) throws SQLException, ClassNotFoundException {
+    public static void excluirReceita(Integer codProjeto) throws SQLException, ClassNotFoundException {
         DAOReceita.excluirReceita(codProjeto);
     }//Fim do método excluirReceita.
     

@@ -100,8 +100,8 @@ public class ViewMenu extends javax.swing.JFrame {
         btRecurso.setBackground(new java.awt.Color(102, 102, 102));
         btRecurso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btRecurso.setForeground(new java.awt.Color(255, 255, 255));
-        btRecurso.setText("Recursos");
-        btRecurso.setToolTipText("Click para administrar recursos");
+        btRecurso.setText("Despesas");
+        btRecurso.setToolTipText("Click para administrar despesas");
         btRecurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRecursoActionPerformed(evt);
@@ -270,8 +270,8 @@ public class ViewMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRecursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRecursoActionPerformed
-        //Invoca a tela ~ ViewRecurso.
-        new ViewRecurso(this.user).setVisible(true);
+        //Invoca a tela ~ ViewDespesa.
+        new ViewDespesa(this.user).setVisible(true);
         this.dispose();
                     
     }//GEN-LAST:event_btRecursoActionPerformed
