@@ -11,11 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import com.cfp.models.User;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+//import net.sf.jasperreports.engine.JRResultSetDataSource;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * Classe que define a tela ~ Acesso.
@@ -274,34 +273,34 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btUsuarioActionPerformed
 
     private void btRelatorioUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRelatorioUsuarioActionPerformed
-        ResultSet rs;
-        try { 
-            JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
-            Map parametros = new HashMap();
-            // trocar para ControllerAtividade
-            rs = ControllerUser.buscarPapeisUsuarios();
-            JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
-            //JasperReport relProjetos = JasperCompileManager.compileReport("C:\\Users\\vtffa\\Desktop\\Projeto POO Av - P2\\Divisão de trabalho entre equipe de desenvolvedores de software ~ V.03.01\\src\\report\\MyReports\\bin\\ProjetosRecursos.jrxml");
-            //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
-            // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
-
-            Object con = ControllerReceita.getConnection();
-            parametros.put("REPORT_CONNECTION",con);
-
-            JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\PapeisUsuarios.jasper", parametros, jrRS);
-            JasperViewer jrViewer = new JasperViewer(impressao,false);
-             
-            viewer.setSize(1200,750);  
-            viewer.setLocationRelativeTo(null); 
-            viewer.getContentPane().add(jrViewer.getContentPane()); 
-            viewer.setVisible(true); 
-            //jrViewer.setVisible(true);
-            //jrViewer.toFront(); 
-        } catch (SQLException | JRException ex) {
-            Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewMenuRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        ResultSet rs;
+//        try { 
+//            JDialog viewer = new JDialog(new javax.swing.JFrame(),"Visualização do Relatório", true);
+//            Map parametros = new HashMap();
+//            // trocar para ControllerAtividade
+//            rs = ControllerUser.buscarPapeisUsuarios();
+//            JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
+//            //JasperReport relProjetos = JasperCompileManager.compileReport("C:\\Users\\vtffa\\Desktop\\Projeto POO Av - P2\\Divisão de trabalho entre equipe de desenvolvedores de software ~ V.03.01\\src\\report\\MyReports\\bin\\ProjetosRecursos.jrxml");
+//            //JasperPrint impressao = JasperFillManager.fillReport(relProjetos, null, jrRS);
+//            // O código abaixo irá invocar o formulário em modo binário e não trará as expressões condicionais definidas no .jrxml.
+//
+//            Object con = ControllerReceita.getConnection();
+//            parametros.put("REPORT_CONNECTION",con);
+//
+//            JasperPrint impressao = JasperFillManager.fillReport("C:\\Users\\vtffa\\Desktop\\TCC\\EngSoft\\src\\report\\MyReports\\PapeisUsuarios.jasper", parametros, jrRS);
+//            JasperViewer jrViewer = new JasperViewer(impressao,false);
+//             
+//            viewer.setSize(1200,750);  
+//            viewer.setLocationRelativeTo(null); 
+//            viewer.getContentPane().add(jrViewer.getContentPane()); 
+//            viewer.setVisible(true); 
+//            //jrViewer.setVisible(true);
+//            //jrViewer.toFront(); 
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ViewMenuRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_btRelatorioUsuarioActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed

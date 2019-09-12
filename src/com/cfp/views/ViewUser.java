@@ -25,7 +25,6 @@ public class ViewUser extends javax.swing.JFrame {
      */ 
     public ViewUser() {
         initComponents();
-        
         tfUsuario.setDocument(new DocumentoLimitado(44));
         tfSenha.setDocument(new DocumentoLimitado(26));
     }

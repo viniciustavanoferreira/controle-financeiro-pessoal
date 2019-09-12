@@ -324,7 +324,7 @@ public class ViewDespesa extends javax.swing.JFrame {
             for (Despesa d : listaDespesas) {
                 listagem = listagem + "\n"
                         + d.getIntCodigo().toString() + "\t\t\t"
-                        + d.getStrDescricao() + "\t\t"
+                        + d.getStrDescricao() + "\t\t\t"
                         + d.getStrAtivo();
             }
         } catch (SQLException | ClassNotFoundException ex) {
